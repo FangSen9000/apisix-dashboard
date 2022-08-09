@@ -85,4 +85,26 @@ $ yarn start
 
 > If there is an error about gyp during yarn install, please ignore it and go ahead!
 
-4. If writing an front end E2E test, please refer to the [Front End E2E Writing Guide](./front-end-e2e.md)
+4. [Pnpm(Optional)](https://pnpm.io/installation)
+
+```shell
+# You can also use pnpm as a tool to download dependent packages.
+$ pnpm install
+
+$ pnpm start
+
+# If some dependent packages are not installed, use the following command. The higher version of NPM forbids automatic installation of peer-to-peer dependencies, but we need them, so conflicts arise.
+
+# In In the .npmrc configuration file, add strict peer dependencies = false, which means that the strict peer dependency mode will be turned off.
+$ npm config set strict-peer-dependencies=false
+
+# Change it to true if you want to automatically install peer dependencies.
+$ npm config set auto-install-peers=true
+
+# The RE2 package is missing for this project
+$ npm/yarn install re2
+```
+
+> When you have used pnpm before or have local dependency packages, it will show faster download speed. If necessary, you can use 'pnpm import' to convert yarn.lock to pnpm-lock.yaml (even for APISIX developers, this thing does not need to be submitted to the warehouse, and our dependent package anchor is still package.json)
+
+5. If writing an front end E2E test, please refer to the [Front End E2E Writing Guide](./front-end-e2e.md)
